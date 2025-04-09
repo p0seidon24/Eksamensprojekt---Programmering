@@ -8,8 +8,7 @@ let correctGuesses = 0;
 const numDecks = 6;
 let showCount = false;
 let formerCount = 0
-
-let history = []; // Gemmer statistik til grafen
+let history = [];
 
 function setup() {
   createCanvas(2000, 1000);
@@ -145,7 +144,7 @@ function updateCount(cardValue) {
 
 function displayInstructions() {
   fill(255);
-  text('Tryk D for at deale kort. Tryk R for at nulstille. Skriv din count i boksen og tryk ENTER for at sammenligne med den rigtige count.', 600, 50);
+  text('Tryk D for at deale kort. Tryk R for at nulstille. Skriv din count i boksen og tryk ENTER for at sammenligne med den rigtige count.\nTryk S for at gemme din graf til din computer :)', 600, 50);
   text('Indtast din egen count her :)', 600, 440);
   text('For at tælle kort, skal man først kende kortværdierne. \nDet er egentlig meget simpelt, hvis et kort har en værdi mellem 2 og 6, så går counten op med 1. \nHvis et kort har værdien mellem 10 og A, så går counten ned med 1. \n Dette gælder så for alle kort i spil, og counten går videre til den næste runde af givne kort',1500,100)
 }
@@ -154,9 +153,11 @@ function keyPressed() {
   if (key === 'd' || key === 'D') {
     dealCardsDealer(2);
     dealCardsPlayer(2);
-    userInput.value('')
+    userInput.value('');
   } else if (key === 'r' || key === 'R') {
     resetGame();
+  } else if (key === 's' || key === 'S'){
+    saveGraph();
   }
 }
 
@@ -202,4 +203,9 @@ function compareCounts() {
   dealCardsDealer(2);
 
   userInput.value(''); 
+}
+
+function saveGraph() {
+  let graphImage = get(1200, 250, 500, 300);
+  graphImage.save("Min Blackjack graph d. " + day() + ". i " + month() + ".", "png");
 }
