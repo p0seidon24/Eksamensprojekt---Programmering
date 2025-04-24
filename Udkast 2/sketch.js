@@ -1,14 +1,14 @@
-let deck = [];
-let dealtCardsPlayer = [];
-let dealtCardsDealer = [];
-let currentCount = 0;
-let userCount = 0;
-let rounds = 0;
-let correctGuesses = 0;
-const numDecks = 6;
-let showCount = false;
-let formerCount = 0
-let history = [];
+let deck = []; //Alle kort
+let dealtCardsPlayer = []; //Spillerens kort
+let dealtCardsDealer = []; //Dealerens kort
+let currentCount = 0; //Den rigtige count, udregnes
+let userCount = 0; //Spillerens count, hentes fra input
+let rounds = 0; //Hvor mange runder man har spillet
+let correctGuesses = 0; //Hvor mange korrekte gæt man har haft
+const numDecks = 6; //Hvor mange deck man vil have - sat til 6 som standard
+let showCount = false; //Boolean som bestemmer om man kan se sidste count eller ej
+let formerCount = 0 //Gemmer den tidligere count
+let history = []; // Gemmer statistik til grafen
 
 function setup() {
   createCanvas(2000, 1000);
